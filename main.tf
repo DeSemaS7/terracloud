@@ -29,15 +29,17 @@ locals {
   instance_type_map = {
     stage = "t2.nano"
     prod = "t2.micro"
+    default = "t2.micro"
   }[terraform.workspace]
 
   instance_count_map = {
     stage = 1
     prod = 2
+    default =1
   }[terraform.workspace]
 
   instances_foreach = {
-    stage =    {
+    default =    {
       "t2.nano" = "ami-0cf6f5c8a62fa5da6"
     }
     prod = {
